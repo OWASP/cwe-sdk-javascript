@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: '10'
       - name: install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --ignore-engines
       - name: release
         run: yarn run semantic-release
         env:
