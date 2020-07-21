@@ -20,7 +20,7 @@ jobs:
       - name: lint code
         run: yarn run lint
       - name: run tests
-        run: yarn test
+        run: yarn run test
       - name: get code coverage report
         run: npx codecov
         env:
