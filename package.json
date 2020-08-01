@@ -41,7 +41,7 @@
     "url": "https://github.com/lirantal/cwe-sdk.git"
   },
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.2.0",
     "fast-xml-parser": "^3.17.4"
   },
   "devDependencies": {
