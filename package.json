@@ -32,13 +32,13 @@
     "vulnerability",
     "security"
   ],
-  "homepage": "https://github.com/lirantal/cwe-sdk",
+  "homepage": "https://github.com/owasp/cwe-sdk",
   "bugs": {
-    "url": "https://github.com/lirantal/cwe-sdk/issues"
+    "url": "https://github.com/owasp/cwe-sdk/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lirantal/cwe-sdk.git"
+    "url": "https://github.com/owasp/cwe-sdk.git"
   },
   "dependencies": {
     "debug": "^4.2.0",
