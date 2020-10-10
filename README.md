@@ -14,6 +14,7 @@
   <a href="https://codecov.io/gh/owasp/cwe-sdk-javascript"><img src="https://badgen.net/codecov/c/github/owasp/cwe-sdk-javascript" alt="codecov"/></a>
   <a href="https://snyk.io/test/github/owasp/cwe-sdk-javascript"><img src="https://snyk.io/test/github/owasp/cwe-sdk-javascript/badge.svg" alt="Known Vulnerabilities"/></a>
   <a href="./SECURITY.md"><img src="https://img.shields.io/badge/Security-Responsible%20Disclosure-yellow.svg" alt="Responsible Disclosure Policy" /></a>
+  <a href="https://owasp.org/www-project-cwe-toolkit/"><img src="https://badgen.net/badge/owasp/cwe-toolkit" alt="OWASP CWE Toolkit" /></a>
 </p>
 
 # Install
