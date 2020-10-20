@@ -23,19 +23,6 @@ let cweArchiveVersion
 
 debug('begin downloading latest CWE archive')
 
-async function updateArchive() {
-  const { data } = await request(ARCHIVE_DOWNLOAD_OPTIONS)
-
-  const zip = new AdmZip(data)
-  const zippedFile = zip.getEntries()[0].entryName
-  cweArchiveVersion = zippedFile.substring(zippedFile.search(/v/) + 1, zippedFile.search(/\.xml/))
-  zip.extractEntryTo(zippedFile, 'raw', false)
-  return rename(
-    path.join(__dirname, '..', 'raw', zippedFile),
-    path.join(__dirname, '..', 'raw', RAW_INPUT_XML_FILENAME)
-  )
-}
-
 updateArchive()
   .then(() => {
     debug(`archive updated to version ${cweArchiveVersion}`)
@@ -64,3 +51,16 @@ updateArchive()
     debug('finished')
   })
   .catch(console.error)
+
+async function updateArchive() {
+  const { data } = await request(ARCHIVE_DOWNLOAD_OPTIONS)
+
+  const zip = new AdmZip(data)
+  const zippedFile = zip.getEntries()[0].entryName
+  cweArchiveVersion = zippedFile.substring(zippedFile.search(/v/) + 1, zippedFile.search(/\.xml/))
+  zip.extractEntryTo(zippedFile, 'raw', false)
+  return rename(
+    path.join(__dirname, '..', 'raw', zippedFile),
+    path.join(__dirname, '..', 'raw', RAW_INPUT_XML_FILENAME)
+  )
+}
