@@ -8,8 +8,23 @@ const debug = require('debug')('cwe-sdk:build')
 
 function createCweDictionary({ cweArchive }) {
   const allWeaknesses = cweArchive.Weakness_Catalog.Weaknesses.Weakness
+  const allCategories = cweArchive.Weakness_Catalog.Categories.Category
+  const membershipMap = new Map()
+  allCategories
+    .filter(category => category.Relationships)
+    .forEach(category => {
+      const memberIds = Array.from(category.Relationships.Has_Member).map(
+        member => member.attr['@_CWE_ID']
+      )
+      memberIds.forEach(memberId => {
+        const current = membershipMap.get(memberId) || []
+        current.push(category.attr['@_ID'])
+        membershipMap.set(memberId, current)
+      })
+    })
   const cweDictionary = {}
   const cweHierarchy = []
+  const cweMemberships = []
 
   allWeaknesses.forEach(function(weakness) {
     const weaknessId = weakness['attr']['@_ID']
@@ -37,12 +52,21 @@ function createCweDictionary({ cweArchive }) {
           })
         }
       }
+
+      const weaknessMembership = membershipMap.get(weaknessId)
+      if (weaknessMembership) {
+        cweMemberships.push({
+          weaknessId,
+          memberships: weaknessMembership
+        })
+      }
     }
   })
 
   return {
     cweDictionary,
-    cweHierarchy
+    cweHierarchy,
+    cweMemberships
   }
 }
 

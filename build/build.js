@@ -13,6 +13,7 @@ const RAW_INPUT_XML_FILENAME = 'cwe-archive.xml'
 const RAW_OUTPUT_JSON_FILENAME = 'cwe-archive.json'
 const OUTPUT_JSON_DICT_FILENAME = 'cwe-dictionary.json'
 const OUTPUT_JSON_HIERARCHY_FILENAME = 'cwe-hierarchy.json'
+const OUTPUT_JSON_MEMBERSHIPS_FILENAME = 'cwe-memberships.json'
 const ARCHIVE_DOWNLOAD_OPTIONS = {
   hostname: 'cwe.mitre.org',
   port: 443,
@@ -36,7 +37,9 @@ updateArchive()
       jsonData: rawJsonCweArchive
     })
 
-    const { cweDictionary, cweHierarchy } = createCweDictionary({ cweArchive: rawJsonCweArchive })
+    const { cweDictionary, cweHierarchy, cweMemberships } = createCweDictionary({
+      cweArchive: rawJsonCweArchive
+    })
 
     writeJsonToFile({
       jsonFilepath: path.join(__dirname, '..', 'raw', OUTPUT_JSON_DICT_FILENAME),
@@ -46,6 +49,11 @@ updateArchive()
     writeJsonToFile({
       jsonFilepath: path.join(__dirname, '..', 'raw', OUTPUT_JSON_HIERARCHY_FILENAME),
       jsonData: cweHierarchy
+    })
+
+    writeJsonToFile({
+      jsonFilepath: path.join(__dirname, '..', 'raw', OUTPUT_JSON_MEMBERSHIPS_FILENAME),
+      jsonData: cweMemberships
     })
 
     debug('finished')
