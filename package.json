@@ -41,7 +41,7 @@
     "url": "https://github.com/owasp/cwe-sdk-javascript.git"
   },
   "dependencies": {
-    "debug": "^4.3.2",
+    "debug": "^4.3.3",
     "fast-xml-parser": "^3.21.0"
   },
   "devDependencies": {
