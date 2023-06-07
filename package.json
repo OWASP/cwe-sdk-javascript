@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "debug": "^4.3.3",
-    "fast-xml-parser": "^4.1.2"
+    "fast-xml-parser": "^4.2.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
