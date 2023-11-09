@@ -3,7 +3,7 @@
 /* eslint-disable security/detect-object-injection */
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require('fs')
-const parser = require('fast-xml-parser')
+const { XMLParser, XMLValidator } = require('fast-xml-parser')
 const debug = require('debug')('cwe-sdk:build')
 
 function createCweDictionary({ cweArchive }) {
@@ -76,7 +76,7 @@ function convertXmlArchiveToJson({ cweArchiveFilepath }) {
 
   const options = {
     attributeNamePrefix: '@_',
-    attrNodeName: 'attr',
+    attributesGroupName: 'attr',
     textNodeName: '#text',
     ignoreAttributes: false,
     ignoreNameSpace: false,
@@ -88,11 +88,12 @@ function convertXmlArchiveToJson({ cweArchiveFilepath }) {
     arrayMode: false
   }
 
-  if (parser.validate(xmlData) !== true) {
+  if (XMLValidator.validate(xmlData) !== true) {
     // @TODO xmlData is not valid
   }
 
-  const rawJsonCweArchive = parser.parse(xmlData, options)
+  const parser = new XMLParser(options)
+  const rawJsonCweArchive = parser.parse(xmlData)
   return rawJsonCweArchive
 }
 
