@@ -61,7 +61,7 @@ describe('Cwe Manager', () => {
     test('A CWE ID with memberships should return an array of ids', () => {
       const cweManager = new CweManager()
       const result = cweManager.getMemberships({ weaknessId: '778' })
-      expect(result).toStrictEqual(['1009', '1036', '1210', '1308'])
+      expect(result).toStrictEqual(['1009', '1036', '1210', '1308', '1355', '1413'])
     })
   })
 })
