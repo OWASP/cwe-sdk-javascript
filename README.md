@@ -52,6 +52,8 @@ This CWE SDK has a build process that prepares the JSON data by downloading the 
 
 This work is made possible thanks to scripts in `./build/`
 
+To run it, execute `yarn run build`
+
 # Contributing
 
 Please consult [CONTRIBUTING](./CONTRIBUTING.md) for guidelines on contributing to this project.
