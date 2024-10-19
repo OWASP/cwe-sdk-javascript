@@ -2,7 +2,7 @@ const { CweManager } = require('../index')
 
 describe('Cwe Manager', () => {
   describe('Cwe Manager supports instantiation with custom data', () => {
-    test('Cwe Manager instnatiated with custom hierarchy', () => {
+    test('Cwe Manager instantiated with custom hierarchy', () => {
       const cweManager = new CweManager({
         cweHierarchy: [{ weaknessId: '31337', parentId: '31338' }]
       })
@@ -10,7 +10,7 @@ describe('Cwe Manager', () => {
       expect(result).toBe(true)
     })
 
-    test.todo('Cwe Manager instnatiated with custom dictionary')
+    test.todo('Cwe Manager instantiated with custom dictionary')
   })
 
   describe('Cwe Manager getters', () => {
